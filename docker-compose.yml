@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  web:
+    build: ./apps/web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  api:
+    build: ./services/api
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+
+  worker:
+    build: ./services/worker
+    depends_on:
+      - api

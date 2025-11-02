@@ -1,0 +1,17 @@
+{
+  "name": "simplup",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run --workspace=@simplup/web dev",
+    "dev:api": "npm run --workspace=@simplup/api dev",
+    "dev:worker": "npm run --workspace=@simplup/worker dev",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\" \"npm run dev:worker\"",
+    "build": "npm run --workspaces build",
+    "lint": "npm run --workspaces lint"
+  }
+}
